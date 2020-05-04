@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Blog_App</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>MyBlog</h1>
+        <a href="/new">記事作成</a>
+        <a href="/category_new">記事カテゴリ</a>
+
+
+        <div class="session">
+            <% if @message %>
+                <%= @message %>
+            <% end %>
+        </div>
+
+        <div class="session">
+            <% if @delete %>
+                <%= @delete%>
+            <% end %>
+        </div>
+
+        <div class="session">
+            <% if @update %>
+                <%= @update %>
+            <% end %>
+        </div>
+
+        <% @blogs.each do |blog| %>
+            <li><a href="/show/<%= blog.id%>"><%= blog.title %></a>: <%= blog.content %>
+            :<%=blog.category.name %></li>
+        <% end %>
+
+        <footer>
+            <a href="/about_me">自己紹介<a>
+        </footer>
+    </body>
+</html>
